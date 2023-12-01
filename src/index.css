@@ -1,0 +1,7 @@
+body{
+    background: #fff;
+    font-family: 'Courier New', Courier, monospace;
+}
+.wpml-ls-link{
+    cursor: pointer;
+}
