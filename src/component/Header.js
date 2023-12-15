@@ -1,45 +1,65 @@
 import React from 'react'
 import  { useState } from 'react'
-import Logo from '../assets/a-letter-logo-png-19.png'
 import "../index.css"
 import { Link } from 'react-router-dom'
 import {FiMenu} from 'react-icons/fi';
 import { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
 import CategoryNavMobile from './CategortNavMob'
+const Menu=[
+  {
+    titleAR:'التسويق والتطوير العقاري',
+    titleEN:'Marketing and Real Estate Investment',
+    id: '1'
+  },
+  {
+    titleAR:'التصاميم والاستشارات الهندسية',
+    titleEN:'Engineering Consulting',
+    id: '2'
+  },
+  {
+    titleAR:'الوساطة العامة',
+    titleEN:'General Mediation',
+    id: '3'
+  },
+  {
+    titleAR:'الوكلات التجارية',
+    titleEN:'Commercial Agencies',
+    
+    id: '4'
+  },
+  {
+    titleAR:' الدعاية والاعلان',
+    titleEN:'Advertising',
+    id: '5'
+  },
+  {
+    titleAR:'الحلول التقنية',
+    titleEN:'Technical Solutions',
+    id: '6'
+  }
+]
+let re=[
+  {titleAR: 'الحلول التقنية', titleEN: 'Technical Solutions', id: '6'}
+,
+{titleAR: ' الدعاية والاعلان', titleEN: 'Advertising', id: '5'}
+, 
+{titleAR: 'الوكلات التجارية', titleEN: 'Commercial Agencies', id: '4'}
+, 
+{titleAR: 'الوساطة العامة', titleEN: 'General Mediation', id: '3'}
+, 
+{titleAR: 'التصاميم والاستشارات الهندسية', titleEN: 'Engineering Consulting', id: '2'}
+, 
+{titleAR: 'التسويق والتطوير العقاري', titleEN: 'Marketing and Real Estate Investment',id: '1'}
+]
+console.log(Menu.reverse())
 function Header() {
   const [open, setopen] =useState(false);
   const{lan,setLan} =useContext(CartContext);
-const Menu=[
-    {
-      titleAR:'التسويق والتطوير العقاري',
-      titleEN:''
-    },
-    {
-      titleAR:' التصاميم والاستشارات الهندسية',
-      titleEN:''
-    },
-    {
-      titleAR:'الوكالات التجارية',
-      titleEN:''
-    },
-    {
-      titleAR:'الوساطة العامة',
-      titleEN:''
-    },
-    {
-      titleAR:'الحلول التقنية ',
-      titleEN:''
-    },
-    {
-      titleAR:'الدعاية والاعلان',
-      titleEN:''
-    }
-]
 window.localStorage.setItem('lan',lan);
 // Menu.map((item)=>{console.log(item.titleAR)})
   return (
-    <>
+    <div className=' border-b-2 border-gray-500'>
     
     {
       lan==="AR"?
@@ -47,90 +67,100 @@ window.localStorage.setItem('lan',lan);
 
         <header
             id="masthead"
-            class="site-header navbar-static-top navbar-light headerV2"
+            class="site-header navbar-static-top navbar-light"
             role="banner"
           >
         <div class="container">
-              <nav class="row navbar navbar-expand-lg">
-                <div class="col-2 col-sm-1 col-md-1 d-lg-none hamburger-wrap order-3 cursor-pointer ">
-        <FiMenu onClick={()=>setopen(true)} className=' '/>
-        {/* <a href="#mobile_nav" class="hamburger-menu">
-                    <span></span>
-                  </a>
-              {open?
-              (<>
-              <div class="navbar-collapse collapse show" id="main"><ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                {
-                  Menu.map((item,index)=>{
+              <nav class="row navbar navbar-expand-xl p-lg-0">
+              <div class="col-7 col-sm-8 col-lg-10 col-md-8 nav-band pl-0">
+                  <div class="row">
+                  <div
+                      class="col-lg-6 d-flex nav-band-right !justify-center align-items-center"
+                    >
+                      <ul className="flex items-center space-x-4">
+  <li className="lang-tab">
+    <div className="w-auto max-w-[100%]">
+      <ul>
+        <li
+          tabIndex="0"
+          className="pt-0 p-0 m-0 block lost wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-current-language wpml-ls-first-item wpml-ls-item-legacy-dropdown"
+        >
+          <a
+            className="wpml-ls-link text-[#071C35]"
+            onClick={() => setLan('ENG')}
+          >
+            <span className="wpml-ls-native" lang="ar">
+              ENG
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li className="wishlist-tab hidden">
+    <a href="/en/wishlist" className="">
+      <i className="far fa-heart" title="Wishlist" aria-hidden="true"></i>
+      <span className="wishlistCounter count"></span>
+    </a>
+  </li>
+  <li className="phone-tab bg-white" data-bs-toggle="tooltip">
+    <a href="javascript:void(0);" className=" text-decoration-none text-black header_call instant-video-call">
+      <i className="far fa-video text-black"></i>
+      <span className='text-black hidden sm:inline'> 
+        {'مكالمه فديو فوريه'}
+        <span className="phone-number-dir"></span>
+      </span>
+    </a>
+  </li>
+  <li className="watsapp-tab bg-white">
+    <a href="https://wa.link/u9ik8p" target="_blank" className="header_whatsapp">
+      <i className="fab fa-whatsapp text-black"></i>
+      <span className='text-black '>WhatsApp</span>
+    </a>
+  </li>
+</ul>
+
+
+                    </div>
+                    <div id="main-nav" class="col-lg-6 pl-0 d-none d-lg-block">
+                      <ul id="menu-top-menu" class="navbar-nav pointer-event">
+                      {
                     
-                 {return <li class="nav-item" key={index}><a class="nav-link p-2 p-lg-3 active" aria-current="page" title={item.titleAR} href="/">{item.titleAR}</a></li>}
-                 
-                  })
-                }
-              <div
-                            class="wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-dropdown js-wpml-ls-legacy-dropdown"
+                    re.map((item) => {
+                      return (
+                        <li
+                          itemscope="itemscope"
+                          itemtype="https://www.schema.org/SiteNavigationElement"
+                          id="menu-item-377627"
+                          className='hover:text-gray-800 hover:underline duration-300 transition-all'
+                        >
+                          <Link
+                          
+                            to={`/Department/${item.id}`}
+                            title={item.titleAR}
+                            className="nav-link"
                           >
-                            <ul>
-                              <li
-                                tabindex="0"
-                                class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-current-language wpml-ls-first-item wpml-ls-item-legacy-dropdown"
-                              >
-                                <a
-                                
-                                  class="js-wpml-ls-item-toggle wpml-ls-item-toggle"
-                                >
-                                  <span class="wpml-ls-native">العربية</span></a
-                                >
-    
-                                <ul class="wpml-ls-sub-menu" onClick={()=> setLan('ENG')}>
-                                  <li
-                                    class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-ar"
-                                  >
-                                    <a  class="wpml-ls-link">
-                                      <span class="wpml-ls-native" lang="ar"
-                                        >ENG</span
-                                      ></a
-                                    >
-                                  </li>
-                                </ul>
-                              </li>
-                            </ul>
-                            
-                          </div>
-              <li class="phone-tab" data-bs-toggle="tooltip">
-                          <a
-                            href="javascript:void(0);"
-                            class="header_call instant-video-call"
-                            ><i class="far fa-video"></i>
-                            <span>
-                              Instant Video Call
-                              <span class="phone-number-dir"></span>
-                            </span>
-                          </a>
+                            {item.titleAR}
+                          </Link>
                         </li>
-                        <li class="watsapp-tab">
-                          <a
-                            href="https://wa.link/u9ik8p"
-                            target="_blank"
-                            class="header_whatsapp"
-                          >
-                            <i class="fab fa-whatsapp"></i>
-                            <span>WhatsApp</span>
-                          </a>
-                        </li>
-              </ul></div>
-    
-              </>):
-                  (<></>)} */}
+                      );
+                    })
+                    
+                  }
+                      </ul>
+                    </div>
+                    
+                  </div>
                 </div>
-                <div class="col-3 col-sm-3 col-md-2 col-lg-2 navbar-brand order-2">
+                
+                <div class="col-1 col-sm-2 col-md-2 col-lg-2">
                   <a href="">
                     <svg
                       width="100"
                       height="25"
                       viewBox="0 0 1617 321"
                       version="1.1"
-                      
+                      className='bg-[#071C35]'
                     >
                       <g
                         id="Page-1"
@@ -148,99 +178,16 @@ window.localStorage.setItem('lan',lan);
                     </svg>
                   </a>
                 </div>
-                <div class="col-7 col-sm-8 col-lg-10 col-md-10 nav-band pl-0 order-1">
-                  <div class="row">
-                    <div id="main-nav" class="col-lg-6 pl-0 d-none d-lg-block">
-                      <ul id="menu-top-menu" class="navbar-nav pointer-event">
-                      {
-                  Menu.map((item,index)=>{
-                    // if(darkmode==='AR')
-                  {return  <li
-                    itemscope="itemscope"
-                    itemtype="https://www.schema.org/SiteNavigationElement"
-                    id="menu-item-377627"
-                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-377627 nav-item"
-                  >
-                    <a
-                      title={item.titleAR}
-                      href="https://properties.emaar.com/en/about-emaar/"
-                      class="nav-link"
-                      >{item.titleAR}
-                      </a
-                    >
-                  </li>}
-                  })
-                }
-                      </ul>
-                    </div>
-                    <div
-                      class="col-lg-6 d-flex nav-band-right justify-content-end align-items-center"
-                    >
-                      <ul>
-                        <li class="lang-tab">
-                          <div
-                            class="wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-dropdown js-wpml-ls-legacy-dropdown"
-                          >
-                            <ul>
-                              <li
-                                tabindex="0"
-                                class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-current-language wpml-ls-first-item wpml-ls-item-legacy-dropdown"
-                              >
-                                <a
-                                  class="js-wpml-ls-item-toggle wpml-ls-item-toggle"
-                                  >
-                                  
-                                  <span
-                                    class="wpml-ls-native">العربية</span></a
-                                >
-    
-                                
-                                    <a  class="wpml-ls-link"
-                                    onClick={()=> setLan('ENG')}
-                                    >
-                                      <span class="wpml-ls-native" lang="ar"
-                                      
-                                        >ENG</span
-                                      ></a
-                                    >
-                              </li>
-                            </ul>
-                          </div>
-                        </li>
-                        <li class="wishlist-tab d-none">
-                          <a href="/en/wishlist/" class="">
-                            <i
-                              class="far fa-heart"
-                              title="Wishlist"
-                              aria-hidden="true"
-                            ></i>
-                            <span class="wishlistCounter count"></span>
-                          </a>
-                        </li>
-                        <li class="phone-tab" data-bs-toggle="tooltip">
-                          <a
-                            href="javascript:void(0);"
-                            class="header_call instant-video-call"
-                            ><i class="far fa-video"></i>
-                            <span>
-                              {'مكالمه فديو فوريه'}
-                              <span class="phone-number-dir"></span>
-                            </span>
-                          </a>
-                        </li>
-                        <li class="watsapp-tab">
-                          <a
-                            href="https://wa.link/u9ik8p"
-                            target="_blank"
-                            class="header_whatsapp"
-                          >
-                            <i class="fab fa-whatsapp"></i>
-                            <span>WhatsApp</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                <div class="col-2 col-sm-1 col-md-1 d-lg-none hamburger-wrap">
+                <div onClick={()=>setopen(true)} className='text-3xl xl:hidden cursor-pointer'>
+        <FiMenu/>
+      </div>
+      <div 
+      className={`${
+        open? 'right-0' : '-right-full'
+        } fixed top-0 bottom-0 z-30 w-full h-screen transition-all duration-200`}>
+        <CategoryNavMobile setcatNavMobile={setopen} data={Menu} lan={lan} setLan={setLan}/>
+      </div>
                 </div>
               </nav>
             </div>
@@ -295,7 +242,7 @@ window.localStorage.setItem('lan',lan);
                     <div id="main-nav" class="col-lg-6 pl-0 d-none d-lg-block">
                       <ul id="menu-top-menu" class="navbar-nav pointer-event">
                       {
-                  Menu.map((item,index)=>{
+                  Menu.map((item)=>{
                     // if(darkmode==='AR')
                   {return  <li
                     itemscope="itemscope"
@@ -303,13 +250,12 @@ window.localStorage.setItem('lan',lan);
                     id="menu-item-377627"
                     class="menu-item menu-item-type-post_type menu-item-object-page menu-item-377627 nav-item"
                   >
-                    <a
-                      title="About Us"
-                      href="https://properties.emaar.com/en/about-emaar/"
+                    <Link
+                      to={`/Department/${item.id}`}
+                      title={item.titleEN}
                       class="nav-link"
                       >{item.titleEN}
-                      </a
-                    >
+                      </Link>
                   </li>}
                   })
                 }
@@ -318,70 +264,48 @@ window.localStorage.setItem('lan',lan);
                     <div
                       class="col-lg-6 d-flex nav-band-right justify-content-end align-items-center"
                     >
-                      <ul>
-                        <li class="lang-tab">
-                          <div
-                            class="wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-dropdown js-wpml-ls-legacy-dropdown"
-                          >
-                            <ul>
-                              <li
-                              
-                                tabindex="0"
-                                class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-current-language wpml-ls-first-item wpml-ls-item-legacy-dropdown"
-                              >
-                                <a
-                                  class="js-wpml-ls-item-toggle wpml-ls-item-toggle"
-                                  >
-                                  
-                                  <span
-                                    class="wpml-ls-native">ENG</span></a
-                                >
-    
-                                
-                                    <a  class="wpml-ls-link"
-                                    onClick={()=> setLan('AR')}
-                                    >
-                                      <span class="wpml-ls-native" lang="ar"
-                                      
-                                        >العربية</span
-                                      ></a
-                                    >
-                              </li>
-                            </ul>
-                          </div>
-                        </li>
-                        <li class="wishlist-tab d-none">
-                          <a href="/en/wishlist/" class="">
-                            <i
-                              class="far fa-heart"
-                              title="Wishlist"
-                              aria-hidden="true"
-                            ></i>
-                            <span class="wishlistCounter count"></span>
-                          </a>
-                        </li>
-                        <li class="phone-tab" data-bs-toggle="tooltip">
-                          <a
-                            href="javascript:void(0);"
-                            class="header_call instant-video-call"
-                            ><i class="far fa-video"></i>
-                            <span>
-                            Instant Video Call
-                              <span class="phone-number-dir"></span>
-                            </span>
-                          </a>
-                        </li>
-                        <li class="watsapp-tab">
-                          <a
-                            href="https://wa.link/u9ik8p"
-                            target="_blank"
-                            class="header_whatsapp"
-                          >
-                            <i class="fab fa-whatsapp"></i>
-                            <span>WhatsApp</span>
-                          </a>
-                        </li>
-                      </ul>
+                      <ul className="flex items-center space-x-4">
+  <li className="lang-tab">
+    <div className="w-auto max-w-[100%]">
+      <ul>
+        <li
+          tabIndex="0"
+          className="pt-0 p-0 m-0 block lost wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-current-language wpml-ls-first-item wpml-ls-item-legacy-dropdown"
+        >
+          <a
+            className="wpml-ls-link text-[#071C35]"
+            onClick={() => setLan('AR')}
+          >
+            <span className="wpml-ls-native" lang="ar">
+              العربيه
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li className="wishlist-tab hidden">
+    <a href="/en/wishlist" className="">
+      <i className="far fa-heart" title="Wishlist" aria-hidden="true"></i>
+      <span className="wishlistCounter count"></span>
+    </a>
+  </li>
+  <li className="phone-tab bg-white" data-bs-toggle="tooltip">
+    <a href="javascript:void(0);" className=" text-decoration-none text-black header_call instant-video-call">
+      <i className="far fa-video text-black"></i>
+      <span className='text-black hidden sm:inline'> 
+      Video Call
+        <span className="phone-number-dir"></span>
+      </span>
+    </a>
+  </li>
+  <li className="watsapp-tab bg-white">
+    <a href="https://wa.link/u9ik8p" target="_blank" className="header_whatsapp">
+      <i className="fab fa-whatsapp text-black"></i>
+      <span className='text-black '>WhatsApp</span>
+    </a>
+  </li>
+</ul>
                     </div>
                   </div>
                 </div>
@@ -390,8 +314,10 @@ window.localStorage.setItem('lan',lan);
           </header>
       )
     }
-    </>
+    </div>
   )
   }
-
+export {
+  Menu
+}
 export default Header

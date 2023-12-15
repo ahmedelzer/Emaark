@@ -1,8 +1,10 @@
 import Home from './component/Home';
 // import * as All from './main'
-import { BrowserRouter, Routes, Route, Outlet, Router, createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
 import Header from './component/Header';
 import Footer from './component/Footer';
+import Department from './component/Department';
+
 const Layout=()=>{
   return(
     <div>
@@ -18,6 +20,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children:[
       {path :'/', element:<Home/>},
+      {path :'/Department/:id', element:<Department/>},
     ],
   },
 ]);
