@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { CartContext } from '../context/CartContext';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
+
+
 const Data=[
   {
     titleAR:'التسويق والتطوير العقاري',
@@ -76,7 +79,6 @@ const Data=[
   }
 ]
 function Footer() {
-  const [open, setopen] =useState(false);
   const{lan} =useContext(CartContext);
   function addopen(e){
     if(e.currentTarget.classList.contains('open')){
@@ -630,16 +632,21 @@ function Footer() {
                   <div class="menu-footer-menu-about-emaar-container">
                     <ul id="menu-footer-menu-about-emaar" class="menu">
                       {
-                        item?.pro?.map((pro)=>{
+                        item?.pro?.map((pro,index)=>{
                           return (
                             <li
-                        id="menu-item-58277"
+                            key={`menu-item-${index}`}
+                            id={`menu-item-58277`}
                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58277"
                       >
+                        <ScrollLink to={`${index}`} smooth={true} duration={300}>
                         <Link to={`/Department/${item.id}`}
-                        title={`${pro}`}
-                          >{pro}</Link
-                        >
+                          title={`${pro}`}>
+
+  {pro}
+                          </Link>
+</ScrollLink>
+
                       </li>
                           )
                         })
@@ -1098,18 +1105,23 @@ function Footer() {
                   <div class="menu-footer-menu-about-emaar-container">
                     <ul id="menu-footer-menu-about-emaar" class="menu">
                       {
-                        item?.proAR?.map((pro)=>{
-                          return (
-                            <li
-                        id="menu-item-58277"
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58277"
-                      >
-                        <Link to={`/Department/${item.id}`}
-                        title={`${pro}`}
-                          >{pro}</Link
+                        item?.proAR?.map((pro,index)=>{
+                            return (
+                              <li
+                              key={index}
+                          id="menu-item-58277"
+                          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58277"
                         >
-                      </li>
-                          )
+                          <ScrollLink to={`${index}`} smooth={true} duration={300}>
+                        <Link to={`/Department/${item.id}`}
+                          title={`${pro}`}>
+
+  {pro}
+                          </Link>
+</ScrollLink>
+                        </li>
+                            )
+                          
                         })
                       }
                       </ul>

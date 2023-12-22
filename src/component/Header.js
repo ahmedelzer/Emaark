@@ -52,7 +52,7 @@ let re=[
 , 
 {titleAR: 'التسويق والتطوير العقاري', titleEN: 'Marketing and Real Estate Investment',id: '1'}
 ]
-console.log(Menu.reverse())
+console.log(re)
 function Header() {
   const [open, setopen] =useState(false);
   const{lan,setLan} =useContext(CartContext);
@@ -71,8 +71,8 @@ window.localStorage.setItem('lan',lan);
             role="banner"
           >
         <div class="container">
-              <nav class="row navbar navbar-expand-xl p-lg-0">
-              <div class="col-7 col-sm-8 col-lg-10 col-md-8 nav-band pl-0">
+              <nav class="row navbar navbar-expand-xl p-lg-0 !justify-between">
+              <div class="col-6 col-sm-7 col-lg-10 col-md-8 nav-band pl-0">
                   <div class="row">
                   <div
                       class="col-lg-6 d-flex nav-band-right !justify-center align-items-center"
@@ -115,7 +115,7 @@ window.localStorage.setItem('lan',lan);
   <li className="watsapp-tab bg-white">
     <a href="https://wa.link/u9ik8p" target="_blank" className="header_whatsapp">
       <i className="fab fa-whatsapp text-black"></i>
-      <span className='text-black '>WhatsApp</span>
+      <span className='text-black hidden sm:inline'>WhatsApp</span>
     </a>
   </li>
 </ul>
@@ -153,8 +153,8 @@ window.localStorage.setItem('lan',lan);
                   </div>
                 </div>
                 
-                <div class="col-1 col-sm-2 col-md-2 col-lg-2">
-                  <a href="">
+                <div class="col-4 col-sm-2 col-md-2 col-lg-2">
+                  <Link href="/">
                     <svg
                       width="100"
                       height="25"
@@ -176,9 +176,9 @@ window.localStorage.setItem('lan',lan);
                         ></path>
                       </g>
                     </svg>
-                  </a>
+                  </Link>
                 </div>
-                <div class="col-2 col-sm-1 col-md-1 d-lg-none hamburger-wrap">
+                <div class="col-2 col-sm-2 col-md-1 d-lg-none hamburger-wrap">
                 <div onClick={()=>setopen(true)} className='text-3xl xl:hidden cursor-pointer'>
         <FiMenu/>
       </div>
@@ -201,7 +201,7 @@ window.localStorage.setItem('lan',lan);
           >
         <div class="container">
               <nav class="row navbar navbar-expand-xl p-lg-0">
-                <div class="col-2 col-sm-1 col-md-1 d-lg-none hamburger-wrap">
+                <div class="col-2 col-sm-2 col-md-1 d-lg-none hamburger-wrap">
                 <div onClick={()=>setopen(true)} className='text-3xl xl:hidden cursor-pointer'>
         <FiMenu/>
       </div>
@@ -212,8 +212,8 @@ window.localStorage.setItem('lan',lan);
         <CategoryNavMobile setcatNavMobile={setopen} data={Menu} lan={lan} setLan={setLan}/>
       </div>
                 </div>
-                <div class="col-1 col-sm-2 col-md-1 col-lg-2">
-                  <a href="">
+                <div class="col-4 col-sm-2 col-md-1 col-lg-2">
+                  <Link href="/">
                     <svg
                       width="100"
                       height="25"
@@ -235,26 +235,28 @@ window.localStorage.setItem('lan',lan);
                         ></path>
                       </g>
                     </svg>
-                  </a>
+                  </Link>
                 </div>
-                <div class="col-7 col-sm-8 col-lg-10 col-md-10 nav-band pl-0">
+                <div class="col-6 col-sm-7 col-lg-10 col-md-10 nav-band pl-0">
                   <div class="row">
                     <div id="main-nav" class="col-lg-6 pl-0 d-none d-lg-block">
                       <ul id="menu-top-menu" class="navbar-nav pointer-event">
                       {
                   Menu.map((item)=>{
                     // if(darkmode==='AR')
+                  // eslint-disable-next-line no-lone-blocks
                   {return  <li
                     itemscope="itemscope"
                     itemtype="https://www.schema.org/SiteNavigationElement"
                     id="menu-item-377627"
-                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-377627 nav-item"
+                    className="hover:text-gray-800 hover:underline duration-300 transition-all menu-item menu-item-type-post_type menu-item-object-page menu-item-377627 nav-item"
                   >
                     <Link
                       to={`/Department/${item.id}`}
                       title={item.titleEN}
                       class="nav-link"
-                      >{item.titleEN}
+                      >
+                        {item.titleEN}
                       </Link>
                   </li>}
                   })
@@ -302,7 +304,7 @@ window.localStorage.setItem('lan',lan);
   <li className="watsapp-tab bg-white">
     <a href="https://wa.link/u9ik8p" target="_blank" className="header_whatsapp">
       <i className="fab fa-whatsapp text-black"></i>
-      <span className='text-black '>WhatsApp</span>
+      <span className='text-black hidden sm:inline'>WhatsApp</span>
     </a>
   </li>
 </ul>

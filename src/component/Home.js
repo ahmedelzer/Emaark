@@ -3,7 +3,7 @@ import "../index.css"
 import { CartContext } from '../context/CartContext';
 import Advertising from '../assets/Advertising.jpg'
 import Commercial from '../assets/Commercial.jpg'
-import commers from '../assets/E-commers.jpg'
+import commers from '../assets/final.jpg'
 import Engineering from '../assets/Engineering.jpg'
 import Marketing from '../assets/Marketing.jpg'
 import Technical from '../assets/Technical.jpg'
@@ -59,7 +59,7 @@ return (
         lan==='ENG'?
         (
             <div className=''>
-                <img className=' rounded-sm w-full h-[600px]' src={main} alt='Emaark'/>
+                <img className=' rounded-sm w-full xl:h-[700px]' src={main} alt='Emaark'/>
             <div className=' text-[22px] mt-12 mb-4 px-4'>Unparalleled services</div>
             <div className='px-4 text-[15px]'><p>
             Welcome to Emaark, where we have been keen since 1996 to provide the best services and products in various sectors. What distinguishes us is our strong commitment to providing high-quality customized services and dedication to achieving customer satisfaction. We believe that partnership with our customers is the key to joint success, and all of this requires a harmonious team. We work with a team. Qualified and professional with extensive experience in their fields and always striving for innovation and development.
@@ -107,7 +107,7 @@ return (
         ):
         (
             <div className=''>
-                <img className=' rounded-sm w-full h-[600px]' src={main} alt='اعمارك'/>
+                <img className=' rounded-sm w-full xl:h-[700px]' src={main} alt='اعمارك'/>
             <div className=' text-[22px] my-12 px-4 text-right'>خدمات لا مثيل لها</div>
             <div className='px-4 text-[15px] text-right'><p>
             أهلا بكم في إعمارك حيث نحرص منذ 1996 على تقديم أفضل الخدمات والمنتجات في مختلف القطاعات ما يميزنا هو التزامنا القوي بتقديم خدمات مخصصة عالية الجودة والتفاني في تحقيق رضا العملاء نحن نؤمن بأن الشراكة مع عملائنا هي المفتاح للنجاح المشترك وكل ذلك يتطلب فريق متناغم نحن نعمل مع فريق مؤهل ومحترف يمتلك خبرة واسعة في مجالاتهم ويسعون دائما للابتكار والتطوير.

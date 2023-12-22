@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Advertising from '../assets/Advertising.jpg'
 import Commercial from '../assets/Commercial.jpg'
-import commers from '../assets/E-commers.jpg'
+import commers from '../assets/final.jpg'
 import Engineering from '../assets/Engineering.jpg'
 import Marketing from '../assets/Marketing.jpg'
 import Technical from '../assets/Technical.jpg'
@@ -33,6 +33,9 @@ const Data=[
       proAR: [{title:'بيع وشراء العقارات',
       description:' إعمارك هي شركة رائده في بيع وشراء كافة أنواع العقارات بطرقها المبتكرة وخدماتها وامتداد خبراتها من سنة التأسيس ١٩٩٦ إلى اليوم حيث نوفر المساندة في عمليات بيع وشراء العقارات المختلفة ومناقشة جميع العروض المتاحة والتأكد من سلامة العقود وتأمين الصفقة بشكل فعال وفي حال رغب الزبون في إعادة استثمار العقار نحن أيضا نقدم كافة الخيارات المتاحة تتجنب معظم الشركات العقارية العمل بالإيجار لكونه معقد وشائك ولكن هذا الأمر يختلف مع إعمارك لكونها تمتلك جميع المؤهلات والخبرات للعمل في مجال إيجار العقارات وأيضا نمتلك برنامج عمل تم تصميمه خصيصا لهذا الغرض لذلك أنا نبرع في هذا التخصص العقاري ونمتلك أعدادا هائلة من العقارات سواء كانت سكنية تجارية أو صناعية وما يميزنا أيضا أننا الوحيدون لدينا عقارات زراعية مستأجرة'
     },
+    {title:'إيجار العقارات',
+      description:' إتتجنب معظم الشركات العقارية العمل بالإيجار لكونه معقد وشائك ولكن هذا الأمر يختلف مع إعمارك لكونها تمتلك جميع المؤهلات والخبرات للعمل في مجال إيجار العقارات وأيضا نمتلك برنامج عمل تم تصميمه خصيصا لهذا الغرض لذلك أنا نبرع في هذا التخصص العقاري ونمتلك أعدادا هائلة من العقارات سواء كانت سكنية تجارية أو صناعية وما يميزنا أيضا أننا الوحيدون لدينا عقارات زراعية مستأجرة'
+},
     {title:'إدارة العقارات',
       description:' إعمارك تسعى لتكون الأولى على مستوى العراق في إدارة العقارات المختلفة ولديها استراتيجية واضحة وهي الأفضل بين الشركات حرفيا من ناحية عدد وأنواع الخدمات المقدمة حيث تناسب جميع العقارات ومتطلبات العملاء بضمنها تقدم تقرير شهري مفصل عن السكان في حال العقار سكني وفي حالة تجاري تقدم تقرير شهري أيضا عن النشاط التجاري بشكل تفصلين وتقدم أيضا عده تقارير عن أسعار الايجارات المحيطة وعن المشاكل والصيانة وعن اسعار العقارات المشابهة والقريبة واقتراح التوسيع والتطوير في حالة وجود فرصة عقارية متاحه وتقدم خدمة الايجار السريع واستحصال المستحقات من المؤجرين في الوقت المحدد وتعمل على إدارة المخاطر التي قد تصادف العقار على المدى الطويل وايضا تقدم اقتراحات سنوية في اعادة استثمار العقار تكون افضل من ناحية العائد والعمر الخدمي للعقار'
 },
@@ -127,7 +130,7 @@ const Data=[
 },
       ],
       id: '3',
-      image: Technical
+      image: commers
     },
     {
       titleAR:'الوكلات التجارية',
@@ -164,13 +167,13 @@ function Department() {
             return <div className=' my-4 containers'>
                   <h2 className=' text-center  my-4'>{item.titleEN}</h2>
                   {
-                        item?.pro?.map((i)=> {
-                              return <div className=' text-center mt-4'>
+                        item?.pro?.map((i,index)=> {
+                              return <div className= {`${index} text-center mt-4`} id={`${index}`}>
                                     <div className='mt-4'><h3 className=' text-center'>{i.title}</h3></div>
                                     <div className='text-center px-3'><p>{i.description}</p></div>
                                     
                                     <div className='mt-30px text-center'>
-  <img src={item.image} className='mx-auto max-h-[900px]' alt={item.titleEN} />
+  <img src={item.image} className='mx-auto max-h-[900px] w-[50%]' alt={item.titleEN} />
   <div className='p-0 mt-4 bg-transparent border-t-0 rounded-sm flex items-center justify-center'>
   <a href='#' className='w-[200px] block border border-[#232323] rounded-sm bg-[#fff] text-[#232323] text-12px font-bold px-15px py-13px uppercase m-0 text-center transition duration-300 hover:bg-[#071C35] hover:text-[#fff]'>
     Contact Us
@@ -190,13 +193,13 @@ function Department() {
                   return <div className=' my-4 containers'>
                         <h2 className=' text-center  my-4'>{item.titleAR}</h2>
                         {
-                              item?.proAR?.map((i)=> {
-                                    return <div className=' text-center mt-4'>
+                              item?.proAR?.map((i,index)=> {
+                                    return <div className=' text-center mt-4' id={`${index}`}>
                                           <div className='mt-4'><h3 className=' text-center'>{i.title}</h3></div>
                                           <div className='text-center px-3 text-[16px]'><p>{i.description}</p></div>
                                           
                                           <div className='mt-30px text-center'>
-        <img src={item.image} className='mx-auto max-h-[900px]' alt={item.titleAR} />
+        <img src={item.image} className='mx-auto max-h-[900px] w-[50%]' alt={item.titleAR} />
         <div className='p-0 mt-4 bg-transparent border-t-0 rounded-sm flex items-center justify-center'>
         <a href='#' className='w-[200px] block border border-[#232323] rounded-sm bg-[#fff] text-[#232323] text-12px font-bold px-15px py-13px uppercase m-0 text-center transition duration-300 hover:bg-[#071C35] hover:text-[#fff]'>
           تواصل معنا
